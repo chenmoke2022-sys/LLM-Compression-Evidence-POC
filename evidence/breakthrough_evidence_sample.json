@@ -1,0 +1,24 @@
+{
+  "schema_id": "evidence.breakthrough.v1",
+  "timestamp_utc": "2026-02-01T16:50:51Z",
+  "env": {
+    "model_path": "<MODEL_PATH>",
+    "python": "3.x",
+    "platform": "Windows-10",
+    "block_size": 64,
+    "bytes_semantics": "proxy_phase_field_patch_entropy",
+    "determinism_checked": true,
+    "determinism_scope": "proxy_metrics_and_summary_bytes"
+  },
+  "summary": {
+    "go": true,
+    "mode": "L1",
+    "entropy_gain_ok": true,
+    "bytes_total": 3616072,
+    "bytes_field": 28672,
+    "bytes_patch": 40960,
+    "bytes_entropy": 3546376,
+    "determinism_delta": 0.0,
+    "determinism_delta_key": "proxy_metrics.perm_block_entropy_before"
+  }
+}

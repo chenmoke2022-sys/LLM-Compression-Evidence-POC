@@ -1,0 +1,37 @@
+{
+  "schema_id": "evidence.v43.v1",
+  "timestamp_utc": "2026-02-01T14:13:27Z",
+  "env": {
+    "model": "<MODEL_PATH>",
+    "phase": "all",
+    "config_path": ""
+  },
+  "summary": {
+    "go": false,
+    "ratio_fp16_effective_min": 4.0,
+    "cos_min": 0.999954,
+    "pareto_vs_v39_high_ratio": false,
+    "pareto_vs_v39_high_cos": false,
+    "seed_entropy_delta": -0.013936,
+    "crossblock_enabled": true,
+    "colddust_enabled": true
+  },
+  "phases": {
+    "seed": {
+      "entropy_before": 11.75,
+      "entropy_after": 11.73,
+      "cos_min_at_same_ratio": 0.999954
+    },
+    "crossblock": {
+      "window_blocks": 2,
+      "cos_min_lift": -0.013732,
+      "entropy_layer0": 11.75,
+      "entropy_layer1": 9.71
+    },
+    "colddust": {
+      "effective_ratio": 4.0,
+      "ppl_change": null
+    }
+  },
+  "rows": []
+}

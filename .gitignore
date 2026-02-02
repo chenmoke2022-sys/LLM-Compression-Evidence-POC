@@ -1,0 +1,7 @@
+# POC 包内不提交大文件与本地路径
+*.pyc
+__pycache__/
+.DS_Store
+*.log
+.env
+.env.*

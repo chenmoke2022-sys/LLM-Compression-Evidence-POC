@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "V43 Evidence (evidence.v43.v1)",
+  "description": "权重层代理证据：Seed × CrossBlock × ColdDust，供门禁 Optional 读取。",
+  "type": "object",
+  "required": ["schema_id", "timestamp_utc", "summary"],
+  "properties": {
+    "schema_id": { "type": "string", "const": "evidence.v43.v1" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "env": {
+      "type": "object",
+      "properties": {
+        "model": { "type": "string" },
+        "phase": { "type": "string", "enum": ["seed", "crossblock", "colddust", "all"] },
+        "config_path": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["go"],
+      "properties": {
+        "go": { "type": "boolean" },
+        "ratio_fp16_effective_min": { "type": "number" },
+        "cos_min": { "type": "number" },
+        "pareto_vs_v39_high_ratio": { "type": "boolean" },
+        "pareto_vs_v39_high_cos": { "type": "boolean" },
+        "seed_entropy_delta": { "type": "number" },
+        "crossblock_enabled": { "type": "boolean" },
+        "colddust_enabled": { "type": "boolean" },
+        "evidence_completeness": { "type": ["string", "null"] },
+        "bytes_total": { "type": ["integer", "null"] },
+        "bytes_field": { "type": ["integer", "null"] },
+        "determinism_delta": { "type": ["number", "null"] },
+        "determinism_delta_key": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "phases": {
+      "type": "object",
+      "properties": {
+        "seed": { "type": "object" },
+        "crossblock": { "type": "object" },
+        "colddust": { "type": "object" }
+      }
+    },
+    "rows": { "type": "array" }
+  }
+}
