@@ -1,0 +1,16 @@
+# 创建 GitHub 仓库时可复制以下内容
+
+## 仓库描述（Description，单行）
+
+Evidence-driven LLM compression research snapshot: reproducible evidence, four pillars (runtime memory, static compression, weight-layer proxy, breakthrough), POC for portfolio.
+
+或中文简短版：
+大模型高效化：证据驱动可复现研究框架（POC），四大支柱、证据与复现方法。
+
+## 话题 / 标签（Topics）
+
+llm, model-compression, reproducible-research, evidence, poc, research-framework
+
+## 关于（About，可选）
+
+本仓库为研究快照与求职作品集，提供可复现证据与实验方法，不承诺长期维护。
