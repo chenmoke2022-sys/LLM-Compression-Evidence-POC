@@ -35,6 +35,7 @@ LICENSE             # MIT，研究快照可自由引用与衍生
 docs/               # 阶段复盘与收尾说明（脱敏）
 evidence/           # 证据示例（脱敏）与 Schema
 schemas/            # 证据 JSON Schema
+scripts/            # 说明：可执行脚本位于主代码库，见 scripts/README.md
 ```
 
 ---
