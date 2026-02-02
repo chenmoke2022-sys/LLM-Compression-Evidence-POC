@@ -1,8 +1,22 @@
 # 复现指南
 
-以下为从零复现本 POC 结论的最小指令集。环境：Python 3.10+。
+从零复现本 POC 结论的最小指令集。环境：Python 3.10+。
 
-**说明**：完整验证脚本与门禁入口位于主代码库；此处 `<REPO_ROOT>` 指代该代码库根目录（含 `tools/`、`tests/`、门禁脚本等）。若仅阅读本 POC 包，可只查看 `evidence/` 与 `schemas/` 理解证据形态。
+**说明**：完整验证与门禁位于主代码库（HoloForge-CE / ThomasLab）；`<REPO_ROOT>` 指主代码库根目录（含 `tools/`、`tests/`、门禁脚本等）。第 1、2 节依赖主代码库；若无法获取，仅能执行第 0 节自检。阅读证据形态可只看 `evidence/` 与 `schemas/`。
+
+---
+
+## 0. 本仓库内自检（无需主代码库或模型）
+
+确认本仓库内证据示例与 Schema 一致。
+
+```bash
+# 在本 POC 仓库根目录（LLM-Compression-Evidence-POC）执行
+pip install -r requirements.txt
+python scripts/validate_evidence.py
+```
+
+**预期**：两行 `PASS` 及「全部证据校验通过。」（或 `All evidence validated.`），退出码 0。
 
 ---
 
@@ -45,8 +59,10 @@ python _suite/v37_evidence_suite.py --check-only --policy _suite/v37_evidence_po
 
 ## 3. 证据含义速查
 
-- **V43_EVIDENCE_LATEST.json**：Seed / CrossBlock / ColdDust 三阶段指标；`summary.go`、`summary.ratio_fp16_effective_min`、`summary.cos_min`。
-- **TNSEC_BREAKTHROUGH_EVIDENCE.json**：Field、熵增益、determinism；`summary.go`、`summary.determinism_delta`、`summary.entropy_gain_ok`。
-- **V37_EVIDENCE_SUITE_REPORT**：各 Claim 的 pass/fail 与门禁总判 NO-GO/GO。
+| 产出 | 含义 |
+|------|------|
+| **V43_EVIDENCE_LATEST.json** | Seed / CrossBlock / ColdDust；`summary.go`、`ratio_fp16_effective_min`、`cos_min` |
+| **TNSEC_BREAKTHROUGH_EVIDENCE.json** | Field、熵增益、determinism；`summary.go`、`determinism_delta`、`entropy_gain_ok` |
+| **V37_EVIDENCE_SUITE_REPORT** | 各 Claim pass/fail，门禁总判 NO-GO/GO |
 
 Schema 见 `schemas/`；示例见 `evidence/`。

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Breakthrough Evidence (evidence.breakthrough.v1)",
+  "description": "战略突破证据：Field、熵增益、determinism，供门禁读取。",
+  "type": "object",
+  "required": ["schema_id", "timestamp_utc", "env", "summary"],
+  "properties": {
+    "schema_id": { "type": "string", "const": "evidence.breakthrough.v1" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "env": {
+      "type": "object",
+      "properties": {
+        "model_path": { "type": "string" },
+        "python": { "type": "string" },
+        "platform": { "type": "string" },
+        "block_size": { "type": "integer" },
+        "bytes_semantics": { "type": "string" },
+        "determinism_checked": { "type": "boolean" },
+        "determinism_scope": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "summary": {
+      "type": "object",
+      "required": ["go", "entropy_gain_ok", "determinism_delta"],
+      "properties": {
+        "go": { "type": "boolean" },
+        "mode": { "type": "string" },
+        "entropy_gain_ok": { "type": "boolean" },
+        "bytes_total": { "type": "integer" },
+        "bytes_field": { "type": "integer" },
+        "bytes_patch": { "type": "integer" },
+        "bytes_entropy": { "type": "integer" },
+        "determinism_delta": { "type": "number" },
+        "determinism_delta_key": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  }
+}
