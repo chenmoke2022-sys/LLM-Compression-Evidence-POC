@@ -1,8 +1,8 @@
 # 复现指南
 
-从零复现本 POC 结论的最小指令集。环境：Python 3.10+。
+从零复现本作品集仓库结论的最小指令集。环境：Python 3.10+。
 
-**说明**：完整验证与门禁位于主代码库（HoloForge-CE / ThomasLab）；`<REPO_ROOT>` 指主代码库根目录（含 `tools/`、`tests/`、门禁脚本等）。第 1、2 节依赖主代码库；若无法获取，仅能执行第 0 节自检。阅读证据形态可只看 `evidence/` 与 `schemas/`。
+**说明**：本仓库只包含“证据样例 + Schema + 自检”。完整的实验脚本与门禁管线位于我的完整实验代码库（未在此公开）；下文用 `<REPO_ROOT>` 指代那份代码库的根目录（含 `tools/`、`tests/`、门禁脚本等）。如果你没有那份代码库，只需要执行第 0 节自检即可理解证据形态与口径。
 
 ---
 
@@ -18,6 +18,8 @@ python scripts/validate_evidence.py
 
 **预期**：两行 `PASS` 及「全部证据校验通过。」（或 `All evidence validated.`），退出码 0。
 
+建议直接打开 `README.md`，里面我把可复核的关键数字（ratio/cosine/determinism_delta/bytes_*）对应到样例文件与字段了。
+
 ---
 
 ## 1. 轻量验证（无模型，约 30 秒）
@@ -28,7 +30,7 @@ python scripts/validate_evidence.py
 # 进入完整代码库根目录（含 tests/、tools/）
 cd <REPO_ROOT>
 
-# 轻量回归：V43 证据脚本出口 + Field 口径 + model-path-after + field_transform 单元测试
+# 轻量回归：证据脚本出口 + 可逆预处理口径 + model-path-after 透传 + 关键单元测试
 python tools/run_light_regression.py
 ```
 
@@ -43,13 +45,13 @@ python tools/run_light_regression.py
 ```bash
 cd <REPO_ROOT>
 
-# 2.1 权重层代理证据（V43）
-python tools/run_v43_evidence.py --model-path <MODEL_DIR> --phase all --output _evidence/V43_EVIDENCE_LATEST.json
+# 2.1 分阶段代理评估证据（权重层/压缩代理指标）
+python tools/run_v43_evidence.py --model-path <MODEL_DIR> --phase all --output _evidence/WEIGHT_PROXY_EVIDENCE.json
 
-# 2.2 战略突破证据（Field / 熵增益）
-python tools/run_tnsec_breakthrough_evidence.py --model-path <MODEL_DIR> --output assets/TNSEC_BREAKTHROUGH_EVIDENCE.json
+# 2.2 稳定性/可复现性证据（预处理 + 熵/字节口径 + determinism）
+python tools/run_tnsec_breakthrough_evidence.py --model-path <MODEL_DIR> --output assets/REPRODUCIBILITY_EVIDENCE.json
 
-# 2.3 门禁（读上述证据，输出 GO/NO-GO 报告）
+# 2.3 门禁（读取证据并输出 GO/NO-GO 报告）
 python _suite/v37_evidence_suite.py --check-only --policy _suite/v37_evidence_policy.json
 ```
 
@@ -61,8 +63,8 @@ python _suite/v37_evidence_suite.py --check-only --policy _suite/v37_evidence_po
 
 | 产出 | 含义 |
 |------|------|
-| **V43_EVIDENCE_LATEST.json** | Seed / CrossBlock / ColdDust；`summary.go`、`ratio_fp16_effective_min`、`cos_min` |
-| **TNSEC_BREAKTHROUGH_EVIDENCE.json** | Field、熵增益、determinism；`summary.go`、`determinism_delta`、`entropy_gain_ok` |
-| **V37_EVIDENCE_SUITE_REPORT** | 各 Claim pass/fail，门禁总判 NO-GO/GO |
+| **WEIGHT_PROXY_EVIDENCE.json** | 分阶段代理评估；关注 `summary.go`、`ratio_fp16_effective_min`、`cos_min`、`bytes_*` |
+| **REPRODUCIBILITY_EVIDENCE.json** | 可复现性/口径；关注 `summary.go`、`determinism_delta`、`entropy_gain_ok`、`bytes_*` |
+| **EVIDENCE_SUITE_REPORT** | 各项检查 pass/fail 与门禁总判 NO-GO/GO |
 
 Schema 见 `schemas/`；示例见 `evidence/`。

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "V43 Evidence (evidence.v43.v1)",
-  "description": "权重层代理证据：Seed × CrossBlock × ColdDust，供门禁 Optional 读取。",
+  "title": "Weight Proxy Evidence (schema_id: evidence.v43.v1)",
+  "description": "分阶段代理评估的证据结构（示例）。用于描述 ratio/cosine/bytes/determinism 等口径，不要求读者理解内部命名。",
   "type": "object",
   "required": ["schema_id", "timestamp_utc", "summary"],
   "properties": {

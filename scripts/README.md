@@ -1,6 +1,6 @@
 # 脚本说明
 
-本仓库 = **LLM-Compression-Evidence-POC**（证据与 Schema 快照）。
+我把这个公开仓库定位为“证据与格式契约快照”：只保留证据样例、Schema 和最小自检脚本。
 
 ## 本仓库内自检（无需主代码库）
 
@@ -10,11 +10,11 @@
 
 ## 主代码库复现脚本（需完整代码库）
 
-以下脚本位于主代码库根目录 `<REPO_ROOT>`，本仓库不包含其代码：
+以下脚本位于我的完整实验代码库根目录 `<REPO_ROOT>`（本公开仓库不包含其代码）：
 
 - 轻量回归：`<REPO_ROOT>/tools/run_light_regression.py`
-- V43 证据：`<REPO_ROOT>/tools/run_v43_evidence.py`
-- 战略突破证据：`<REPO_ROOT>/tools/run_tnsec_breakthrough_evidence.py`
+- 分阶段代理评估证据：`<REPO_ROOT>/tools/run_v43_evidence.py`
+- 可复现性/口径证据：`<REPO_ROOT>/tools/run_tnsec_breakthrough_evidence.py`
 - 门禁套件：`<REPO_ROOT>/_suite/v37_evidence_suite.py`
 
 具体命令与顺序见根目录 **REPRODUCTION.md** 第 1、2 节。

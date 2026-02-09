@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Breakthrough Evidence (evidence.breakthrough.v1)",
-  "description": "战略突破证据：Field、熵增益、determinism，供门禁读取。",
+  "title": "Reproducibility Evidence (schema_id: evidence.breakthrough.v1)",
+  "description": "可复现性与口径检查的证据结构（示例）。包含 determinism_delta、bytes_* 与熵相关字段，用于展示证据形态。",
   "type": "object",
   "required": ["schema_id", "timestamp_utc", "env", "summary"],
   "properties": {
