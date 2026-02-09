@@ -21,6 +21,8 @@ SCHEMAS_DIR = REPO_ROOT / "schemas"
 EVIDENCE_SCHEMA_MAP = {
     "v43_evidence_sample.json": "v43_evidence.schema.json",
     "breakthrough_evidence_sample.json": "breakthrough_evidence.schema.json",
+    "v300_vajra_sample.json": "v300_vajra.schema.json",
+    "v400_resonance_sample.json": "v400_resonance.schema.json",
 }
 
 
